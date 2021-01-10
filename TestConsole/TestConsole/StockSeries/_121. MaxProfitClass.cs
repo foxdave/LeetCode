@@ -46,7 +46,7 @@ namespace TestConsole.StockSeries
         /// <summary>
         /// ID 122
         /// https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/
-        /// DP
+        /// DP dp0表示手里没有股票的最大利润 dp1表示手里有股票的最大利润
         /// </summary>
         /// <param name="prices"></param>
         /// <returns></returns>
@@ -67,12 +67,23 @@ namespace TestConsole.StockSeries
         /// <summary>
         /// ID 123
         /// https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii/
+        /// 参照题122，从dp0空仓和dp1持有股票两种状态转化到四种状态
+        /// 第一次买b1，第一次卖s1，第二次买b2，第二次卖s2的最大利润
         /// </summary>
         /// <param name="prices"></param>
         /// <returns></returns>
         public int MaxProfit3(int[] prices)
         {
-            return 0;
+            int b1 = -prices[0], b2 = -prices[0], s1 = 0, s2 = 0;
+            for (int i = 1; i < prices.Length; i++)
+            {
+                int currB1 = Math.Max(b1, -prices[i]);
+                int currS1 = Math.Max(s1, b1 + prices[i]);
+                int currB2 = Math.Max(b2, s1 - prices[i]);
+                int currS2 = Math.Max(s2, b2 + prices[i]);
+                b1 = currB1; b2 = currB2; s1 = currS1; s2 = currS2;
+            }
+            return s2;
         }
     }
 }

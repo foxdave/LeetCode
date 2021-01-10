@@ -53,5 +53,41 @@ namespace TestConsole.StockSeries.Tests
             int actualResult = new MaxProfitClass().MaxProfit2(prices);
             Assert.AreEqual(expectedResult, actualResult);
         }
+
+        [TestMethod()]
+        public void MaxProfit3Test1()
+        {
+            int[] prices = new int[] { 3, 3, 5, 0, 0, 3, 1, 4 };
+            int expectedResult = 6;
+            int actualResult = new MaxProfitClass().MaxProfit3(prices);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod()]
+        public void MaxProfit3Test2()
+        {
+            int[] prices = new int[] { 1, 2, 3, 4, 5 };
+            int expectedResult = 4;
+            int actualResult = new MaxProfitClass().MaxProfit3(prices);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod()]
+        public void MaxProfit3Test3()
+        {
+            int[] prices = new int[] { 7, 6, 4, 3, 1 };
+            int expectedResult = 0;
+            int actualResult = new MaxProfitClass().MaxProfit3(prices);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod()]
+        public void MaxProfit3Test4()
+        {
+            int[] prices = new int[] { 1 };
+            int expectedResult = 0;
+            int actualResult = new MaxProfitClass().MaxProfit3(prices);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }
