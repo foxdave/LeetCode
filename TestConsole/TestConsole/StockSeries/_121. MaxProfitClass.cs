@@ -85,5 +85,38 @@ namespace TestConsole.StockSeries
             }
             return s2;
         }
+
+        /// <summary>
+        /// ID 188
+        /// https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iv/
+        /// 继续状态转移方程，数组[k][0/1]
+        /// </summary>
+        /// <param name="prices"></param>
+        /// <returns></returns>
+        public int MaxProfit4(int k, int[] prices)
+        {
+            if (k > prices.Length / 2)
+            {
+                return MaxProfit1(prices);
+            }
+            else
+            {
+                int[,] states = new int[k + 1, 2];
+                for (int i = 0; i <= k; i++)
+                {
+                    states[i, 1] = -prices[0];
+                }
+                for (int p = 0; p < prices.Length; p++)
+                {
+                    //第K次交易
+                    for (int j = 1; j <= k; j++)
+                    {
+                        states[j, 0] = Math.Max(states[j, 0], states[j, 1] + prices[p]);
+                        states[j, 1] = Math.Max(states[j, 1], states[j - 1, 0] - prices[p]);
+                    }
+                }
+                return states[k, 0];
+            }
+        }
     }
 }

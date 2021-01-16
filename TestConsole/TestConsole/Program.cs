@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TestConsole.StockSeries;
 
 namespace TestConsole
 {
@@ -7,18 +8,21 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            ListNode head = new ListNode(2);
-            ListNode node1 = new ListNode(1);
-            ListNode node2 = new ListNode(3);
-            head.next = node1;
-            node1.next = node2;
+            int[] prices = new int[] { 3, 2, 6, 5, 0, 3 };
+            int k = 2;
+            int result = new MaxProfitClass().MaxProfit4(k, prices);
+            #region old
+            //ListNode head = new ListNode(2);
+            //ListNode node1 = new ListNode(1);
+            //ListNode node2 = new ListNode(3);
+            //head.next = node1;
+            //node1.next = node2;
 
-            int x = 2;
-            ListNode result = new PartitionClass().Partition(head, x);
+            //int x = 2;
+            //ListNode result = new PartitionClass().Partition(head, x);
             //int[] result = new MaxSlidingWindowClass().MaxSlidingWindow(new int[] { -7, -8, 7, 5, 7, 1, 6, 0 }, 4);
             //bool result = new CanPlaceFlowersClass().CanPlaceFlowers(new int[] { 1, 0, 0, 0, 0, 1 }, 2);
             //bool result = new IsIsomorphicClass().IsIsomorphic("ab", "aa");
-            #region old
             //char[][] rec = new char[4][];
             //rec[0] = new char[] { '1', '0', '1', '0', '0' };
             //rec[1] = new char[] { '1', '0', '1', '1', '1' };
