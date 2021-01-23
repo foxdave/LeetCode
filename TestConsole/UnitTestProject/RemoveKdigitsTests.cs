@@ -1,10 +1,10 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestConsole;
 
-namespace UnitTestProject
+namespace TestConsole.Tests
 {
     [TestClass]
-    public class TestConsoleTests
+    public class RemoveKdigitsTests
     {
         [TestMethod]
         public void RemoveKdigitsTest1()
