@@ -13,26 +13,20 @@ namespace TestConsole
                 return 0;
             }
             int maxLCIS = 1;
-            int tempMaxLCIS;
-            for (int i = 0; i < nums.Length - 1; i++)
+            int tempMax = 1;
+            int pointer = 0;
+            for (int i = pointer; i < nums.Length - 1; i++)
             {
-                tempMaxLCIS = 1;
-                for (int j = i; j < nums.Length - 1; j++)
+                if (nums[i] < nums[i + 1])
                 {
-                    if (nums[j] < nums[j + 1])
-                    {
-                        tempMaxLCIS++;
-                        if (maxLCIS < tempMaxLCIS)
-                        {
-                            maxLCIS = tempMaxLCIS;
-                        }
-                    }
-                    else
-                    {
-                        break;
-                    }
+                    tempMax++;
+                    continue;
                 }
+                maxLCIS = maxLCIS < tempMax ? tempMax : maxLCIS;
+                pointer = i + 1;
+                tempMax = 1;
             }
+            maxLCIS = maxLCIS < tempMax ? tempMax : maxLCIS;
             return maxLCIS;
         }
     }
