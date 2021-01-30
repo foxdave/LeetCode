@@ -14,7 +14,7 @@ namespace TestConsole
             int[] coll = new int[n * n];
             for (int i = 0; i < n * n; i++)
             {
-                coll[i] = i;
+                coll[i] = -1;
             }
             //注意提示2，整个点集是0到N*N-1的排列，用heights存储每个高度的格子坐标
             int[][] heights = new int[n * n][];
@@ -63,12 +63,12 @@ namespace TestConsole
         /// <returns></returns>
         private int FindRoot(int[] coll, int x)
         {
-            if (coll[x] == x)
+            int root = x;
+            while (coll[root] != -1)
             {
-                return x;
+                root = coll[root];
             }
-            int root = coll[x];
-            return FindRoot(coll, root);
+            return root;
         }
 
         /// <summary>
